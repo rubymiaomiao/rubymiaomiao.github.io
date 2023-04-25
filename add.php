@@ -1,34 +1,32 @@
+
 <?php
-// Get the form data
-$name = $_POST['name'];
-$email = $_POST['email'];
-$message = $_POST['message'];
+    $servername = "personal-website.c9tpewf7kccu.ap-southeast-2.rds.amazonaws.com";
+    $username = "rubymiao";
+    $password = "00000329";
+    $dbname = "-";
 
-// Sanitize the data to prevent SQL injection attacks
-$name = mysqli_real_escape_string($con, $name);
-$email = mysqli_real_escape_string($con, $email);
-$message = mysqli_real_escape_string($con, $message);
+    // 创建连接
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Connect to the database
-$con = mysqli_connect("hostname", "username", "password", "database_name");
+    // 检查连接
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 
-// Check if the connection was successful
-if (mysqli_connect_errno()) {
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-    exit();
-}
+    // 处理 POST 请求
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $message = $_POST['message'];
 
-// Insert the data into the database
-$sql = "INSERT INTO contacts (name, email, message) VALUES ('$name', '$email', '$message')";
-if (mysqli_query($con, $sql)) {
-    // Send a success message to the user and redirect them back to the homepage
-    echo "Message sent successfully!";
-    header("Location: index.html");
-} else {
-    // Send an error message to the user
-    echo "Error: " . $sql . "<br>" . mysqli_error($con);
-}
+        $sql = "INSERT INTO personal-website (name, email, message) VALUES ('$name', '$email', '$message')";
 
-// Close the database connection
-mysqli_close($con);
+        if ($conn->query($sql) === TRUE) {
+            echo "Thank you for your feedback!";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+
+        $conn->close();
+    }
 ?>
