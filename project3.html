@@ -1,0 +1,140 @@
+﻿<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ruby</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link href="https://fonts.googleapis.com/css?family=Rambla:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/et-lineicons.css">
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="ruby-page"> 
+        <section>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="page-title">
+                            <h1>Portfolio Detail</h1>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                              <li class="breadcrumb-item active" aria-current="page">Portfolio Detail</li>
+                            </ol>
+                          </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END SECTION BREADCRUMB -->
+        
+        <!-- START SECTION PORTFOLIO DETAIL -->
+        <section>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div style="overflow-x:scroll; white-space:nowrap;">
+                            <img src="images/portfolio/portfolio3-1.png" alt="Image 1" style="display:inline-block;">
+                            <img src="images/portfolio/portfolio3-2.png" alt="Image 2" style="display:inline-block;">
+                            <img src="images/portfolio/portfolio3-3.png" alt="Image 3" style="display:inline-block;">
+                        </div>
+                        <p>Tip:Bar rectangle can move.</p>                 
+                    </div>
+                    <div class="col-lg-4">
+                        <ul class="list_none portfolio_info_box">
+                            <li><h3 class="ruby-heading ">Name</h3><b>Blockade-Arcade-Game</b></li>
+                            <li><h3 class="ruby-heading">Date</h3><b>March 2020</b></li>
+                            <li><h3 class="ruby-heading">Category</h3><b>JAVA, GUI</b></li>
+                            <li><h3 class="ruby-heading">PROJECT link</h3><b><a href="https://github.com/rubymiaomiao/GUI-Practice-Blockade-Arcade-Game">https://github.com/rubymiaomiao/GUI-Practice-Blockade-Arcade-Game</a></b></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="pf_content">	
+                            <div class="ruby-about-heading" style="color: #0556BF">
+                                <h2>Blockade-Arcade-Game Note</h2>
+                            </div>
+                                <b>The image resource Data class</b>
+                                <p>1.Introduce the <code>statics</code>image resource file</p>
+                                <p>2. Write the main startup class of the program</p>
+                                <p>Create a new window <code>JFrame</code> form class, and give it a width and height, which are respectively 900 long and 720 wide. Set the <code>setResizable</code> function for the window to be non-resizable, set it to false, and display the window.</p>
+
+                                <b>Preparing for the game</b>
+                                <p>Since it is greedy for snakes, there must be some attributes and methods in this core class. We can think about it, snakes definitely have a position, and snakes also have a length. Here, the small body of the snake is in our material. Think of it as a square.</p>
+
+                                <p>How do snakes grow up? There is no doubt that food is eaten, so we also set the position for food. In order to enhance the experience of the game, it is necessary to add a scoring mechanism, and of course the score attribute of the game. After thinking about this, let the little snake move, and there must be a Timer Timer class to move.</p>
+
+                                <b>Drawing components</b>
+                                <p>Create the <code>GamePanel</code> class to inherit the <code>JPanel</code> class. All our game screens are provided by the canvas component. The <code>paintComponent</code>function is the core method of the entire game. Without the entire method, everything is blank. On this canvas All images are dependent on the <code>paintComponent()</code> function. 
+                                <code>alt+insert</code>calls the <code>override method</code> and writes this function, then sets the background color of the panel, draws the header information area, food, snake, game prompts, failure judgment, and the game area, etc. are all added.</p>
+
+                                <b>Animate the object</b>
+                                <p>Here comes the problem again, so how do we judge whether the game is in the starting state, whether the snake can move, and how to solve a series of problems such as how to grow longer after eating food? This reminds me of a monitor, and we can control the moving direction of the snake through the keyboard, so this is also a monitor, right? You can't make the little snake change direction or grow up with your willpower, can you? So here we have to introduce the interface of keyboard monitoring and event monitoring.</p> 
+
+                                <code>* public class GamePanel extends JPanel implements KeyListener, ActionListener {}</code>
+
+                                <p>And rewrite related methods; <code>actionPerformed</code> function, <code>keyTyped</code>function, <code>keyPressed</code> means the method of pressing the keyboard, and <code>keyReleased</code> means the method of releasing the keyboard.</p>
+                                <p>The <code>actionPerformed</code> function first judges whether the state is started, if it starts, then the snake will move, how to move? Except for the head, everything else must move forward, that is, the body moves.</p>
+
+                                <p>It was said before that the body of the little snake is square, so every time the little snake moves, the next one will move forward, which is equivalent to replacing the previous one.</p>
+
+                                <p>Eating food: How can we judge that the little snake has eaten food? Think of it this way, when the snake has the same food as the head, even if it has eaten the food, the length will be increased by one after eating the food, and the length will be increased by one if it is eaten. The corresponding score should also be increased, and the default increase is 10 points. After eating the food, it is impossible for the food to remain in place, right? So at this time, when it comes to introducing <code>Random random = new Random()</code> <code>Random</code> object, randomly let food appear at any position on the game interface, this position is roughly estimated as follows.</p>
+
+                                <p>The end of the game: So how to judge the end, of course, if the head and the body collide with each other, it will fail. For the same reason, as long as the <code>snakeX[i] = = snakeX[0] && snakeY[i] ** snakeY[ 0]</code> means the game is over.</p>
+                                <p>Finally, there is the <code>repain</code> function, which needs to constantly update the page to make the animation move. <code>repaint();</code></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border-top border-bottom py-2 py-md-4 post_navigation">
+                    <div class="row align-items-center justify-content-between">
+                        <div class="col-auto">
+                            <a href="project2.html">
+                                <div class="d-flex align-items-center">
+                                    <i class="ti-arrow-left"></i>
+                                    <div>
+                                        <span>Previous Post</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-auto">
+                            <a href="project4.html">
+                                <div class="d-flex align-items-center flex-row-reverse text-right">
+                                    <i class="ti-arrow-right"></i>
+                                    <div>
+                                        <span> Next Post</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+    </div>
+    <!-- JS -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/modernizr-2.6.2.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/sticky-kit.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
