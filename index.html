@@ -436,23 +436,26 @@
                         <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
                             <h3 class="ruby-about-heading">Please Contact Me</h3>
                             <p>I would like to hear from you</p>
-                            <form method="post" class="row">
+                            <form method="POST" class="gform" jata-email="rubyben2023@outlook.com" action="https://script.google.com/macros/s/AKfycbzPWq2aJ7Ad96bG1c6QEMWcYIWHK7uCF2-LGRUcOOz2tmZ5EE29JFQjseQRz4NhajCu/exec">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Name" required></div>
+                                        <input type="text" class="form-control" placeholder="Name" name="name"></div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Email"></div>
+                                        <input type="text" class="form-control" placeholder="Email" name="email"></div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <textarea name="message" id="message" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+                                        <textarea name="message" id="message" cols="30" rows="7" class="form-control" placeholder="Message" name="message"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <input type="submit" class="btn btn-contact" value="Send!"></div>
+                                </div>
+                                <div style="display:none" class="thankyou_message">                   
+                                    <h2><em>Thanks</em> for contacting us! We will get back to you soon!</h2>
                                 </div>
                             </form>
                         </div>
@@ -493,6 +496,7 @@
         <script src="js/jquery.waypoints.min.js"></script>
         <script src="js/sticky-kit.min.js"></script>
         <script src="js/main.js"></script>
+        <script data-cfasync="false" type="text/javascript" src="js/contact.js"></script>
 
     </div>
 </body>
